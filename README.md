@@ -16,20 +16,6 @@ A curated collection of extensions and themes for [Pi Coding Agent](https://gith
 - **npm convenience scripts** — `install-all`, `install-extensions`, `install-themes` for local development.
 - **Auto-discovery** — Themes are automatically picked up from `~/.pi/agent/themes/`.
 
-## Screenshots
-
-### statusline-pi
-
-![statusline-pi — custom footer with git, PR, context, and model](assets/statusline-pi.png)
-
-### advisor-pi
-
-![advisor-pi — strategic guidance from a higher-capability model](assets/advisor-pi.png)
-
-### grok-pi
-
-![grok-pi — Grok CLI models in Pi](assets/grok-pi.png)
-
 ## Quick Start
 
 ### One-liner install (recommended)
@@ -58,6 +44,8 @@ Reload Pi after installation — open Pi and type `/reload`.
 ### statusline-pi
 
 `statusline-pi` replaces Pi's default footer with a compact project statusline.
+
+![statusline-pi — custom footer with git, PR, context, and model](assets/statusline-pi.png)
 
 ```
 current-dir │ branch [changed files] PR #x │ remaining context tokens (percentage) context zone │ provider/model
@@ -96,6 +84,8 @@ Zone coloring:
 
 `grok-pi` registers the **`grok-cli`** provider so Pi can use the same models as the Grok CLI (including **Composer 2.5** as `grok-composer-2.5-fast`). Authenticate with `grok login`, then pick `grok-cli` in `/model`.
 
+![grok-pi — Grok CLI models in Pi](assets/grok-pi.png)
+
 Full setup: [extensions/grok-pi/README.md](extensions/grok-pi/README.md)
 
 ```bash
@@ -109,6 +99,8 @@ pi --provider grok-cli --model grok-composer-2.5-fast
 `advisor-pi` registers an `advisor` tool for strategic planning and course correction.
 The executor model can ask a configured advisor model for guidance while keeping
 file changes under the executor's control.
+
+![advisor-pi — strategic guidance from a higher-capability model](assets/advisor-pi.png)
 
 **Commands:**
 
