@@ -46,7 +46,7 @@
     "mdLink": "cyan",
     "mdLinkUrl": "accent",
     "mdCode": "green",
-    "mdCodeBlock": "bg2",
+    "mdCodeBlock": "text",
     "mdCodeBlockBorder": "border",
     "mdQuote": "cyan",
     "mdQuoteBorder": "green",
