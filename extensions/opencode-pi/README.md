@@ -57,14 +57,25 @@ Commands:
 /opencode-pi status
 /opencode-pi models
 /opencode-pi test
+/opencode-pi update
 /opencode-pi help
 ```
 
+### Refreshing the model list
+
+OpenCode changes its free model roster frequently. Refresh the registered models at runtime:
+
+```text
+/opencode-pi update
+```
+
+This queries `opencode models opencode`, updates the provider's model list, and shows how many new models were added. The status command also displays the timestamp of the last discovery.
+
 ## Configuration
 
-| Environment variable | Description |
-| --- | --- |
-| `OPENCODE_PI_BIN` | Override the OpenCode executable path. Defaults to `opencode`. |
+| Environment variable | Description                                                                                         |
+| -------------------- | --------------------------------------------------------------------------------------------------- |
+| `OPENCODE_PI_BIN`    | Override the OpenCode executable path. Defaults to `opencode`.                                      |
 | `OPENCODE_PI_MODELS` | Comma- or space-separated model list to register. Values without `/` are prefixed with `opencode/`. |
 
 Example:
