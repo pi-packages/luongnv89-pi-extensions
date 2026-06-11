@@ -340,7 +340,7 @@ function getZone(contextUsageRatio: number, contextWindow: number): string {
 	}
 }
 
-interface StatuslineSegments {
+export interface StatuslineSegments {
 	dir: string;
 	git: string;
 	compactGit: string;
@@ -349,7 +349,7 @@ interface StatuslineSegments {
 	model: string;
 }
 
-function formatResponsiveStatusline(segments: StatuslineSegments, separator: string, width: number): string[] {
+export function formatResponsiveStatusline(segments: StatuslineSegments, separator: string, width: number): string[] {
 	const safeWidth = Math.max(1, width);
 	const wideLine = [segments.dir, segments.git, segments.context, segments.speed, segments.model].join(separator);
 	if (visibleWidth(wideLine) <= safeWidth) return [wideLine];
@@ -366,11 +366,11 @@ function formatStatuslineGroup(segments: string[], separator: string, width: num
 	return segments.filter(Boolean).map((segment) => truncateToWidth(segment, width));
 }
 
-function getNarrowBranchWidth(width: number): number {
+export function getNarrowBranchWidth(width: number): number {
 	return Math.max(MIN_NARROW_BRANCH_WIDTH, Math.floor(width * NARROW_BRANCH_WIDTH_RATIO));
 }
 
-function truncatePlainTextToWidth(text: string, maxWidth: number, ellipsis = "…"): string {
+export function truncatePlainTextToWidth(text: string, maxWidth: number, ellipsis = "…"): string {
 	if (visibleWidth(text) <= maxWidth) return text;
 
 	const targetWidth = Math.max(0, maxWidth - visibleWidth(ellipsis));
@@ -382,7 +382,7 @@ function truncatePlainTextToWidth(text: string, maxWidth: number, ellipsis = "�
 	return `${output}${ellipsis}`;
 }
 
-function formatGitSection(
+export function formatGitSection(
 	theme: ExtensionContext["ui"]["theme"],
 	branch: string,
 	changedFiles: number,
