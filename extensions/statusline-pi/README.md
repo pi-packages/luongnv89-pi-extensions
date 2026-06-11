@@ -19,7 +19,9 @@ pi-extensions │ main [2] PR #12 │ 840,037 (84.0%) Plan │ 42.5 tok/s │ op
 ## Behavior
 
 - Installs as a Pi extension and enables automatically on session start.
-- Replaces Pi's default footer with a single compact statusline.
+- Replaces Pi's default footer with a compact responsive statusline.
+- Uses one line when the terminal is wide enough, then wraps into multiple width-safe
+  lines on narrow terminals so long branch names do not hide context, speed, or model details.
 - Refreshes git change count every 5 seconds.
 - Shows average model response speed as output tokens per second (`tok/s`) across completed assistant responses.
 - Includes the active assistant response in the average while it is streaming, then keeps the completed average visible while idle.

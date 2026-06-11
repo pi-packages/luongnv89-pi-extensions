@@ -1,5 +1,5 @@
 import type { ExtensionAPI, ExtensionContext } from "@earendil-works/pi-coding-agent";
-import { truncateToWidth } from "@earendil-works/pi-tui";
+import { truncateToWidth, visibleWidth } from "@earendil-works/pi-tui";
 import { execFileSync } from "node:child_process";
 import * as path from "node:path";
 
@@ -32,6 +32,8 @@ interface CurrentResponseSpeed {
 const GIT_REFRESH_MS = 5_000;
 const PR_REFRESH_MS = 60_000;
 const SPEED_RENDER_THROTTLE_MS = 250;
+const NARROW_BRANCH_WIDTH_RATIO = 0.55;
+const MIN_NARROW_BRANCH_WIDTH = 8;
 
 export default function statuslinePiExtension(pi: ExtensionAPI) {
 	let enabled = true;
@@ -172,22 +174,31 @@ export default function statuslinePiExtension(pi: ExtensionAPI) {
 					const dir = path.basename(ctx.cwd) || ctx.cwd;
 					const branch = gitInfo.branch ?? footerData.getGitBranch?.() ?? "no-git";
 					const changed = gitInfo.changedFiles;
-
-					const segments = [
-						theme.fg("mdLink", dir),
-						formatGitSection(theme, branch, changed, gitInfo.prNumber),
-						formatContextSection(theme, usage, zone),
-						formatSpeedSection(theme, responseSpeed),
-						theme.fg("mdLink", model),
-					].filter((segment): segment is string => Boolean(segment));
-
 					const separator = theme.fg("borderMuted", " │ ");
-					const statusline = truncateToWidth(segments.join(separator), width);
+
+					const statuslines = formatResponsiveStatusline(
+						{
+							dir: theme.fg("mdLink", dir),
+							git: formatGitSection(theme, branch, changed, gitInfo.prNumber),
+							compactGit: formatGitSection(
+								theme,
+								branch,
+								changed,
+								gitInfo.prNumber,
+								getNarrowBranchWidth(width),
+							),
+							context: formatContextSection(theme, usage, zone),
+							speed: formatSpeedSection(theme, responseSpeed),
+							model: theme.fg("mdLink", model),
+						},
+						separator,
+						width,
+					);
 					const extensionStatuses = Array.from(footerData.getExtensionStatuses?.().values() ?? []).map((status) =>
 						truncateToWidth(status, width),
 					);
 
-					return [statusline, ...extensionStatuses];
+					return [...statuslines, ...extensionStatuses];
 				},
 			};
 		});
@@ -329,13 +340,57 @@ function getZone(contextUsageRatio: number, contextWindow: number): string {
 	}
 }
 
-function formatGitSection(
+export interface StatuslineSegments {
+	dir: string;
+	git: string;
+	compactGit: string;
+	context: string;
+	speed: string;
+	model: string;
+}
+
+export function formatResponsiveStatusline(segments: StatuslineSegments, separator: string, width: number): string[] {
+	const safeWidth = Math.max(1, width);
+	const wideLine = [segments.dir, segments.git, segments.context, segments.speed, segments.model].join(separator);
+	if (visibleWidth(wideLine) <= safeWidth) return [wideLine];
+
+	return [
+		...formatStatuslineGroup([segments.dir, segments.compactGit], separator, safeWidth),
+		...formatStatuslineGroup([segments.context, segments.speed, segments.model], separator, safeWidth),
+	];
+}
+
+function formatStatuslineGroup(segments: string[], separator: string, width: number): string[] {
+	const line = segments.filter(Boolean).join(separator);
+	if (visibleWidth(line) <= width) return [line];
+	return segments.filter(Boolean).map((segment) => truncateToWidth(segment, width));
+}
+
+export function getNarrowBranchWidth(width: number): number {
+	return Math.max(MIN_NARROW_BRANCH_WIDTH, Math.floor(width * NARROW_BRANCH_WIDTH_RATIO));
+}
+
+export function truncatePlainTextToWidth(text: string, maxWidth: number, ellipsis = "…"): string {
+	if (visibleWidth(text) <= maxWidth) return text;
+
+	const targetWidth = Math.max(0, maxWidth - visibleWidth(ellipsis));
+	let output = "";
+	for (const character of text) {
+		if (visibleWidth(output + character) > targetWidth) break;
+		output += character;
+	}
+	return `${output}${ellipsis}`;
+}
+
+export function formatGitSection(
 	theme: ExtensionContext["ui"]["theme"],
 	branch: string,
 	changedFiles: number,
 	prNumber?: number,
+	maxBranchWidth?: number,
 ): string {
-	const branchText = theme.fg("mdLink", branch);
+	const branchDisplay = maxBranchWidth === undefined ? branch : truncatePlainTextToWidth(branch, maxBranchWidth);
+	const branchText = theme.fg("mdLink", branchDisplay);
 	const changesColor = changedFiles > 0 ? "warning" : "dim";
 	const changesText = theme.fg(changesColor, `[${changedFiles}]`);
 	const prText = prNumber ? ` ${theme.fg("mdHeading", `PR #${prNumber}`)}` : "";
