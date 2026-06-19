@@ -4,11 +4,19 @@ Logs all Pi model interactions to help debug silent failures, rate limiting, and
 
 ## Installation
 
+**From npm (recommended):**
+
+```bash
+pi install npm:model-debugger
+```
+
+**From this repo:**
+
 ```bash
 cp -r extensions/model-debugger ~/.pi/agent/extensions/model-debugger
 ```
 
-Then restart Pi.
+Then restart Pi or run `/reload`.
 
 ## Usage
 

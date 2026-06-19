@@ -25,17 +25,20 @@ No OpenCode login is required for the bundled free OpenCode models.
 
 ## Install
 
-From this repository:
+**From npm (recommended):**
+
+```bash
+pi install npm:opencode-pi
+```
+
+**From this repository:**
 
 ```bash
 npm run install-extensions
+# or: cp -r extensions/opencode-pi ~/.pi/agent/extensions/
 ```
 
-Then restart Pi or run:
-
-```text
-/reload
-```
+Then restart Pi or run `/reload`.
 
 ## Usage
 

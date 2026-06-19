@@ -16,13 +16,61 @@ A curated collection of extensions and themes for [Pi Coding Agent](https://gith
 - **opencode-pi** — Bridge local OpenCode CLI free models into Pi without OpenCode login, with OpenCode tools disabled and Pi tool calls prompt-bridged back into Pi.
 - **pi-delegator** — Agent skill for delegating approved tasks to a monitored Pi subprocess, preferring free `opencode-cli` models and reporting session metrics.
 - **Neon Green themes** — Futuristic dark (`neon-green`) and light (`neon-green-light`) themes with neon green, cyan, and magenta accents.
-- **One-command install** — Interactive or automated (`--auto`) installer via a single curl pipe.
-- **npm convenience scripts** — `install-all`, `install-extensions`, `install-themes`, `install-skills` for local development.
+- **npm packages** — Several extensions publish to npm; install with Pi’s package manager (`pi install npm:<name>`).
+- **One-command install** — Interactive or automated (`--auto`) installer via a single curl pipe (full repo: all extensions, themes, skills).
+- **npm convenience scripts** — `install-all`, `install-extensions`, `install-themes`, `install-skills` for local development from a clone.
 - **Auto-discovery** — Themes and skills are automatically picked up from Pi's agent directories.
 
 ## Quick Start
 
-### One-liner install (recommended)
+Use **npm packages** when you only need specific extensions. Use the **repo installer** for everything (themes, skills, extensions not on npm, or a full mirror of this repo).
+
+### Install extensions from npm (recommended for individual packages)
+
+Pi registers npm packages in `~/.pi/agent/settings.json` and installs them under `~/.pi/agent/npm/`. Use `pi install`, not plain `npm install`.
+
+```bash
+# One extension
+pi install npm:statusline-pi
+pi install npm:advisor-pi
+pi install npm:grok-pi
+pi install npm:opencode-pi
+pi install npm:model-debugger
+
+# Pin a version
+pi install npm:opencode-pi@1.1.0
+
+# Project-local (writes to .pi/settings.json in the current project)
+pi install -l npm:statusline-pi
+```
+
+| npm package | What it provides |
+|-------------|------------------|
+| [`statusline-pi`](https://www.npmjs.com/package/statusline-pi) | Custom footer (git, PR, context, speed, cost, CPU/MEM) |
+| [`advisor-pi`](https://www.npmjs.com/package/advisor-pi) | `advisor` tool + `/advisor-pi` |
+| [`grok-pi`](https://www.npmjs.com/package/grok-pi) | `grok-cli` provider |
+| [`opencode-pi`](https://www.npmjs.com/package/opencode-pi) | `opencode-cli` free models |
+| [`model-debugger`](https://www.npmjs.com/package/model-debugger) | Model request logging to `~/.pi/agent/logs/` |
+
+**Not on npm yet** (install from repo below): `apple-fm-pi`, `claude-code-pi`.
+
+Try without installing (current session only):
+
+```bash
+pi -e npm:advisor-pi
+```
+
+List and update installed packages:
+
+```bash
+pi list
+pi update --extensions
+pi remove npm:advisor-pi
+```
+
+Reload Pi after changes — type `/reload` (or restart Pi).
+
+### One-liner install (full collection from GitHub)
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/luongnv89/pi-extensions/main/install.sh | bash -s -- --auto

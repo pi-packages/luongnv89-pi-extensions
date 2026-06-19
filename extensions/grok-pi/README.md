@@ -23,7 +23,15 @@ Models are read from `~/.grok/models_cache.json` when present; otherwise the ext
 
 ## Step-by-step: install
 
-### Option A — install with the pi-extensions repo (recommended)
+### Option A — from npm (recommended)
+
+```bash
+pi install npm:grok-pi
+```
+
+Then run `/reload` in Pi (or restart).
+
+### Option B — install with the pi-extensions repo
 
 From your machine:
 
@@ -40,7 +48,7 @@ cp -r ~/.pi/pi-extensions/extensions/grok-pi ~/.pi/agent/extensions/
 chmod 700 ~/.pi/agent/extensions/grok-pi/bin/*
 ```
 
-### Option B — install everything from pi-extensions
+### Option C — install everything from pi-extensions
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/luongnv89/pi-extensions/main/install.sh | bash -s -- --auto

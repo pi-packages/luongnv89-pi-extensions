@@ -59,10 +59,17 @@ pi --advisor-enabled=false
 
 ## Install
 
-From the repo root:
+**From npm (recommended):**
+
+```bash
+pi install npm:advisor-pi
+```
+
+**From this repo:**
 
 ```bash
 cp -r extensions/advisor-pi ~/.pi/agent/extensions/
+# or: ~/.pi/pi-extensions/install.sh --auto
 ```
 
 Then run `/reload` in Pi.

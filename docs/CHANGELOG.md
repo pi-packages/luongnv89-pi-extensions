@@ -11,7 +11,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- **README**: Document npm install via `pi install npm:<package>` and table of published extensions.
+
 ### Fixed
+
+## [npm extensions] — 2026-06-19
+
+### Added
+
+- **npm**: Published `advisor-pi@1.0.0`, `grok-pi@1.0.0`, `model-debugger@1.0.0`, `opencode-pi@1.1.0`.
+- **model-debugger**: `pi` manifest, `publishConfig`, and repo metadata for npm.
+- **grok-pi** / **opencode-pi**: `prepublishOnly` build script.
 
 ## [statusline-pi 1.1.0] — 2026-06-19
 
