@@ -70,6 +70,8 @@ pi remove npm:advisor-pi
 
 Reload Pi after changes — type `/reload` (or restart Pi).
 
+**Gallery:** Published packages with the `pi-package` keyword appear on [pi.dev/packages](https://pi.dev/packages). See [docs/DEVELOPMENT.md](docs/DEVELOPMENT.md#listing-on-pidevpackages) for metadata (`pi.image`, republish checklist).
+
 ### One-liner install (full collection from GitHub)
 
 ```bash

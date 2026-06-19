@@ -130,6 +130,50 @@ Core tokens used by extensions:
 | `cursorColor`        | `"#5eeb8d"`        |
 | `selectionBackground`| `"#1e3028"`        |
 
+## Listing on [pi.dev/packages](https://pi.dev/packages)
+
+The gallery is **not** a manual submission form. It indexes **public npm packages** that Pi recognizes as Pi packages.
+
+### Requirements
+
+1. **`keywords` includes `"pi-package"`** — required for gallery discoverability ([Pi packages docs](https://pi.dev/docs/latest/packages)).
+2. **`pi` manifest in `package.json`** — at minimum `"pi": { "extensions": ["./src/index.ts"] }` (or skills/themes/prompts paths).
+3. **`publishConfig.access": "public"`** and a successful `npm publish` from the extension directory.
+4. **Useful `description`** — shown on the catalog card; keep it one clear sentence.
+5. **`repository`** — gallery links to your GitHub repo when present.
+
+### Optional gallery preview
+
+Under the `pi` key you can add:
+
+```json
+"pi": {
+  "extensions": ["./src/index.ts"],
+  "image": "https://raw.githubusercontent.com/luongnv89/pi-extensions/main/assets/statusline-pi.png"
+}
+```
+
+- **`image`**: PNG, JPEG, GIF, or WebP (static preview).
+- **`video`**: MP4 URL (hover preview on desktop).
+
+Use **stable raw GitHub URLs** on `main` (or a release asset), not repo-relative paths.
+
+### After publish
+
+- Verify on npm: `npm view <name> keywords` should list `pi-package`.
+- Search the gallery: https://pi.dev/packages (filter **Recently published** or search by name).
+- Indexing is automatic; new or updated packages usually appear after npm metadata propagates (often minutes, sometimes longer).
+
+### Per-extension release
+
+```bash
+cd extensions/<name>
+npm version patch   # or minor
+npm publish --access public
+```
+
+`prepublishOnly` runs `npm run build` where configured.
+
 ## npm Scripts
 
 | Script                 | Effect                                              |

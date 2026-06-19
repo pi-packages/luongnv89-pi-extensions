@@ -1,6 +1,6 @@
 {
   "name": "model-debugger",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Debug Pi model interactions: log requests, detect silent failures, track model selection",
   "type": "module",
   "main": "./index.ts",
@@ -10,9 +10,12 @@
   ],
   "scripts": {},
   "pi": {
-    "extensions": ["./index.ts"]
+    "extensions": [
+      "./index.ts"
+    ]
   },
   "keywords": [
+    "pi-package",
     "pi",
     "pi-coding-agent",
     "pi-extension",
