@@ -169,10 +169,30 @@ Use **stable raw GitHub URLs** on `main` (or a release asset), not repo-relative
 ```bash
 cd extensions/<name>
 npm version patch   # or minor
-npm publish --access public
+npm publish --access public --otp=123456
 ```
 
 `prepublishOnly` runs `npm run build` where configured.
+
+Publish all five npm extensions from repo root (2FA OTP required):
+
+```bash
+chmod +x scripts/publish-npm-extensions.sh
+./scripts/publish-npm-extensions.sh 123456
+# or: NPM_OTP=123456 ./scripts/publish-npm-extensions.sh
+```
+
+### Gallery `pi.image` URLs (npm metadata)
+
+| Package | `pi.image` asset |
+|---------|------------------|
+| advisor-pi | `assets/advisor-pi.png` |
+| grok-pi | `assets/composer-2.5-170-tok-s.png` |
+| opencode-pi | `assets/pi-opencode-cli-model-list.png` |
+| statusline-pi | `assets/statusline-pi-150toks-haiku-4.5.png` |
+| model-debugger | (none yet) |
+
+Images must be reachable at `https://raw.githubusercontent.com/luongnv89/pi-extensions/main/...` on `main` before pi.dev can show them.
 
 ## npm Scripts
 
