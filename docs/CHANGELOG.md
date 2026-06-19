@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - **README**: Document npm install via `pi install npm:<package>` and table of published extensions.
+- **Extension READMEs** (npm packages): Unified install section — npm link, `pi install` / pin / `-l` / `-e`, `pi list` / `update` / `remove`, git fallback.
 
 ### Fixed
 

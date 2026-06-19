@@ -21,52 +21,43 @@ Models are read from `~/.grok/models_cache.json` when present; otherwise the ext
 2. **Grok CLI** installed and on your `PATH` (`grok --version`).
 3. Network access to `https://cli-chat-proxy.grok.com` and `https://auth.x.ai`.
 
-## Step-by-step: install
+## Install
 
-### Option A — from npm (recommended)
+Published on npm: [`grok-pi`](https://www.npmjs.com/package/grok-pi). Use **Pi's package manager** (`pi install`), not `npm install` alone.
 
 ```bash
 pi install npm:grok-pi
+pi install npm:grok-pi@1.0.0   # pin version
+pi install -l npm:grok-pi      # project-local (.pi/settings.json)
+pi -e npm:grok-pi              # one session, no install
 ```
 
 Then run `/reload` in Pi (or restart).
 
-### Option B — install with the pi-extensions repo
+```bash
+pi list
+pi update npm:grok-pi
+pi remove npm:grok-pi
+```
 
-From your machine:
+**From [pi-extensions](https://github.com/luongnv89/pi-extensions) (git):**
 
 ```bash
-# 1) Clone or update the extensions repo
 git clone https://github.com/luongnv89/pi-extensions.git ~/.pi/pi-extensions
-# or: cd ~/.pi/pi-extensions && git pull
-
-# 2) Copy only grok-pi into Pi’s extension directory
-mkdir -p ~/.pi/agent/extensions
 cp -r ~/.pi/pi-extensions/extensions/grok-pi ~/.pi/agent/extensions/
-
-# 3) Ensure helper scripts are executable
 chmod 700 ~/.pi/agent/extensions/grok-pi/bin/*
 ```
 
-### Option C — install everything from pi-extensions
+Full collection:
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/luongnv89/pi-extensions/main/install.sh | bash -s -- --auto
 ```
 
-That installs **all** extensions in this repo (including `grok-pi` once it is merged/published).
+**After install**
 
-### Option C — one-off test without copying
-
-```bash
-pi -e ~/.pi/pi-extensions/extensions/grok-pi/src/index.ts
-```
-
-### After install
-
-1. Start Pi (or restart if it is already running).
-2. Run **`/reload`** so Pi picks up the new extension.
-3. Confirm models: `pi --list-models | rg grok-cli`
+1. Run **`/reload`** (or restart Pi).
+2. Confirm models: `pi --list-models | rg grok-cli`
 
 You should see at least:
 

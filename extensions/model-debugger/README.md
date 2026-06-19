@@ -2,21 +2,30 @@
 
 Logs all Pi model interactions to help debug silent failures, rate limiting, and model selection issues.
 
-## Installation
+## Install
 
-**From npm (recommended):**
+Published on npm: [`model-debugger`](https://www.npmjs.com/package/model-debugger). Use **Pi's package manager** (`pi install`), not `npm install` alone.
 
 ```bash
 pi install npm:model-debugger
+pi install npm:model-debugger@1.0.0   # pin version
+pi install -l npm:model-debugger        # project-local (.pi/settings.json)
+pi -e npm:model-debugger              # one session, no install
 ```
 
-**From this repo:**
+Then run `/reload` in Pi (or restart).
+
+```bash
+pi list
+pi update npm:model-debugger
+pi remove npm:model-debugger
+```
+
+**From [pi-extensions](https://github.com/luongnv89/pi-extensions) (git):**
 
 ```bash
 cp -r extensions/model-debugger ~/.pi/agent/extensions/model-debugger
 ```
-
-Then restart Pi or run `/reload`.
 
 ## Usage
 

@@ -59,20 +59,29 @@ pi --advisor-enabled=false
 
 ## Install
 
-**From npm (recommended):**
+Published on npm: [`advisor-pi`](https://www.npmjs.com/package/advisor-pi). Register the package with **Pi** (`pi install`) — plain `npm install` does not add it to Pi's `settings.json`.
 
 ```bash
 pi install npm:advisor-pi
+pi install npm:advisor-pi@1.0.0   # pin version
+pi install -l npm:advisor-pi      # project-local (.pi/settings.json)
+pi -e npm:advisor-pi              # one session, no install
 ```
 
-**From this repo:**
+Then run `/reload` in Pi (or restart).
+
+```bash
+pi list
+pi update npm:advisor-pi
+pi remove npm:advisor-pi
+```
+
+**From [pi-extensions](https://github.com/luongnv89/pi-extensions) (git):**
 
 ```bash
 cp -r extensions/advisor-pi ~/.pi/agent/extensions/
-# or: ~/.pi/pi-extensions/install.sh --auto
+# or: curl -fsSL .../install.sh | bash -s -- --auto
 ```
-
-Then run `/reload` in Pi.
 
 ## Cost and latency
 

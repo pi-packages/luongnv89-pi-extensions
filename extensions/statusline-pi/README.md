@@ -38,18 +38,25 @@ pi-extensions │ main [2] PR #12 │ $0.18 │ CPU 42% · MEM 68% │ 840,037 (
 
 ## Install
 
-**npm** (published package):
+Published on npm: [`statusline-pi`](https://www.npmjs.com/package/statusline-pi). Use **Pi's package manager** (`pi install`), not `npm install` alone.
 
 ```bash
-npm install -g statusline-pi
+pi install npm:statusline-pi
+pi install npm:statusline-pi@1.1.0   # pin version
+pi install -l npm:statusline-pi      # project-local (.pi/settings.json)
+pi -e npm:statusline-pi              # one session, no install
 ```
 
-Copy or link the package into Pi’s extensions directory (layout depends on your Pi setup), then run `/reload`.
+Then run `/reload` in Pi (or restart).
 
-**From this repo**:
+```bash
+pi list
+pi update npm:statusline-pi
+pi remove npm:statusline-pi
+```
+
+**From [pi-extensions](https://github.com/luongnv89/pi-extensions) (git):**
 
 ```bash
 cp -r extensions/statusline-pi ~/.pi/agent/extensions/
 ```
-
-Then run `/reload` in Pi.
