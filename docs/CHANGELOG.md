@@ -5,7 +5,27 @@ All notable changes to this project are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [1.0.0] — Unreleased
+## [Unreleased]
+
+### Added
+
+### Changed
+
+### Fixed
+
+## [statusline-pi 1.1.0] — 2026-06-19
+
+### Added
+
+- **statusline-pi**: Host **CPU** and **MEM** utilization in the footer (`CPU 42% · MEM 68%`), refreshed every 5 seconds with threshold-based colors.
+- **statusline-pi**: Estimated accumulated **session cost** (USD) from per-turn token usage and model catalog rates.
+- **statusline-pi**: Average model **response speed** (`tok/s`), including in-progress streaming responses.
+
+### Changed
+
+- **statusline-pi**: Responsive multi-line footer layout for narrow terminals.
+
+## [1.0.0] — 2026-05-22
 
 ### Added
 

@@ -38,7 +38,15 @@ pi-extensions │ main [2] PR #12 │ $0.18 │ CPU 42% · MEM 68% │ 840,037 (
 
 ## Install
 
-From the repo root:
+**npm** (published package):
+
+```bash
+npm install -g statusline-pi
+```
+
+Copy or link the package into Pi’s extensions directory (layout depends on your Pi setup), then run `/reload`.
+
+**From this repo**:
 
 ```bash
 cp -r extensions/statusline-pi ~/.pi/agent/extensions/
