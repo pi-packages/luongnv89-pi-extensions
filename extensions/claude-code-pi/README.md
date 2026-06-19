@@ -1,5 +1,7 @@
 # claude-code-pi
 
+![claude-code-cli provider in Pi](../../assets/claude-code-cli.png)
+
 `claude-code-pi` registers a `claude-code-cli` provider in Pi and delegates every model call to the local Claude Code CLI with `claude -p` / `--print`.
 
 This extension is intentionally a CLI bridge. It does **not** use the Anthropic SDK, direct HTTP APIs, or Pi's built-in Claude provider as a fallback. If `claude -p` is unavailable or fails, the Pi model turn fails with setup guidance instead of silently using another transport.

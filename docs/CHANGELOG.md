@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **README**: Document npm install via `pi install npm:<package>` and table of published extensions.
 - **Extension READMEs** (npm packages): Unified install section — npm link, `pi install` / pin / `-l` / `-e`, `pi list` / `update` / `remove`, git fallback.
 - **npm / pi.dev gallery**: `pi-package` keyword and `pi.image` on published extensions; DEVELOPMENT.md gallery checklist. Bump patch versions locally (publish with `npm publish --otp=…`).
+- **README / assets**: Screenshot gallery on root README; richer images in extension READMEs; normalize `claude-code-cli.png` and `statusline-pi-2-lines.png` filenames.
 
 ### Fixed
 

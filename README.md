@@ -6,6 +6,21 @@
 
 A curated collection of extensions and themes for [Pi Coding Agent](https://github.com/earendil-works/pi-coding-agent). Share your Pi setup across different environments with ease.
 
+## Screenshots
+
+| | |
+|:---:|:---:|
+| **statusline-pi** — git, cost, CPU/MEM, context zone, tok/s | **statusline-pi** — wrapped footer on a narrow terminal |
+| ![statusline-pi](assets/statusline-pi-150toks-haiku-4.5.png) | ![statusline-pi two lines](assets/statusline-pi-2-lines.png) |
+| **grok-pi** — Composer 2.5 via `grok-cli` | **opencode-pi** — free OpenCode models in `/model` |
+| ![grok-pi](assets/composer-2.5-170-tok-s.png) | ![opencode model list](assets/pi-opencode-cli-model-list.png) |
+| **opencode-pi** — DeepSeek flash in session | **claude-code-pi** — `claude-code-cli` provider |
+| ![opencode deepseek](assets/pi-opencode-deepseek-4-flash.jpeg) | ![claude code cli](assets/claude-code-cli.png) |
+| **advisor-pi** — strategic `advisor` tool | **Codex** — example Pi session (built-in provider) |
+| ![advisor-pi](assets/advisor-pi.png) | ![pi codex](assets/pi-codex-gpt-5.5.png) |
+
+More assets live in [`assets/`](assets/) (e.g. `statusline-pi-gpt-5-mini-195toks.png`, `pi-nvidia-kimi-2.6.png`).
+
 ## Key Features
 
 - **statusline-pi** — Compact custom footer showing current directory, git branch, changed files, GitHub PR number, remaining context window (tokens + percentage), context zone, average model response speed, and active provider/model.
@@ -99,7 +114,9 @@ Reload Pi after installation — open Pi and type `/reload`.
 
 `statusline-pi` replaces Pi's default footer with a compact project statusline.
 
-![statusline-pi — custom footer with git, PR, context, average speed, and model](assets/statusline-pi.png)
+![statusline-pi — single-line footer](assets/statusline-pi-150toks-haiku-4.5.png)
+
+![statusline-pi — responsive two-line layout](assets/statusline-pi-2-lines.png)
 
 ```
 current-dir │ branch [changed files] PR #x │ remaining context tokens (percentage) context zone │ average response speed │ provider/model
@@ -146,6 +163,8 @@ The value averages completed assistant responses, includes the active response w
 
 `claude-code-pi` registers the **`claude-code-cli`** provider so Pi can use Claude Code CLI model aliases such as `sonnet`, `opus`, and `fable`. Every model turn spawns the local `claude -p` command with the selected model; there is no Anthropic SDK, HTTP API, or built-in provider fallback.
 
+![claude-code-pi — Claude Code CLI in Pi](assets/claude-code-cli.png)
+
 Full setup: [extensions/claude-code-pi/README.md](extensions/claude-code-pi/README.md)
 
 ```bash
@@ -172,6 +191,8 @@ pi --provider apple-fm --model system
 
 ![grok-pi — Grok CLI models in Pi](assets/grok-pi.png)
 
+![Composer 2.5 — ~170 tok/s in footer](assets/composer-2.5-170-tok-s.png)
+
 Full setup: [extensions/grok-pi/README.md](extensions/grok-pi/README.md)
 
 ```bash
@@ -185,6 +206,10 @@ pi --provider grok-cli --model grok-composer-2.5-fast
 `opencode-pi` registers the **`opencode-cli`** provider so Pi can use free models exposed by the local OpenCode CLI, without `opencode auth login`.
 
 ![opencode-pi — OpenCode CLI free models in Pi](assets/opencode-pi.png)
+
+![OpenCode model picker in Pi](assets/pi-opencode-cli-model-list.png)
+
+![DeepSeek v4 flash free session](assets/pi-opencode-deepseek-4-flash.jpeg)
 
 Full setup: [extensions/opencode-pi/README.md](extensions/opencode-pi/README.md)
 

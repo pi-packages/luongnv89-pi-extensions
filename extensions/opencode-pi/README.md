@@ -4,6 +4,10 @@
 
 ![opencode-pi screenshot](../../assets/opencode-pi.png)
 
+![opencode-cli models in Pi model picker](../../assets/pi-opencode-cli-model-list.png)
+
+![DeepSeek v4 flash free via opencode-cli](../../assets/pi-opencode-deepseek-4-flash.jpeg)
+
 It is intended for the free OpenCode models that work without `opencode auth login`, such as:
 
 - `opencode/deepseek-v4-flash-free`

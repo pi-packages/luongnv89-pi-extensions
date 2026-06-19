@@ -1,6 +1,10 @@
 # statusline-pi
 
-![statusline-pi screenshot](../../assets/statusline-pi.png)
+![statusline-pi — cost, context, tok/s](../../assets/statusline-pi-150toks-haiku-4.5.png)
+
+![statusline-pi — two-line wrap on narrow terminals](../../assets/statusline-pi-2-lines.png)
+
+![statusline-pi — GPT-5 mini session](../../assets/statusline-pi-gpt-5-mini-195toks.png)
 
 Compact project statusline footer for Pi.
 
